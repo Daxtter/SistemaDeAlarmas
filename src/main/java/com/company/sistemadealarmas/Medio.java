@@ -29,10 +29,16 @@ public class Medio {
             case "email" -> {
                 envioDeAlamrPorEmail(alarma.getMensaje());
             }
+            case "consola" -> {
+                envioDeAlarmaPorConsola(alarma.getMensaje());
+            }
         }
     }
     
    
+    private void envioDeAlarmaPorConsola(String mensaje){
+        System.out.println(""+mensaje);
+    }
     private void envioDeAlamrPorFacebook(String mensaje){
         //Aqui se comunicará con Facebook
     }

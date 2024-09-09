@@ -13,8 +13,8 @@ import java.util.List;
  *
  * @author nunez
  */
-public  abstract class Aprendizaje {
-    public void guardarAlarma(Alarma alarma) throws FileNotFoundException, IOException{
+public class Aprendizaje {
+    public static void guardarAlarma(Alarma alarma) throws FileNotFoundException, IOException{
         Archivo archivo = new Archivo("baseDeDatosDispositivoSA");
         List<String[]> alarmas = archivo.leerArchivoCSVEntrenamiento();
         String[] cadena = new String[2];
@@ -22,7 +22,7 @@ public  abstract class Aprendizaje {
         alarmas.add(cadena);
         archivo.escribirArchivoCSVSinCabecera(alarmas);
     }
-    public Alarma recomendarAlarma(){
+    public static Alarma recomendarAlarma(){
         Alarma alarma = new Alarma();
         //Aqui estaria el algoritmo para la recomendacion de la alarma
         return alarma;

@@ -4,6 +4,7 @@
  */
 package com.company.sistemadealarmas;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -15,22 +16,37 @@ public class Alarma {
     Date fecha;
     Medio tipoDeMedio;
 
-    public Alarma(String mensaje, Date fecha, Medio TipoDeMedio) {
+    public Alarma(String mensaje, Date fecha, Medio TipoDeMedio) throws IOException {
         this.mensaje = mensaje;
         this.fecha = fecha;
         this.tipoDeMedio = TipoDeMedio;
+        
     }
 
+    public void guardarAlarma() throws IOException{
+        Aprendizaje.guardarAlarma(this);
+    }
     Alarma() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     
-    public void enviarMensaje(long tiempo){
+    public boolean enviarMensaje(long tiempo){
         if (tiempo>= fecha.getTime()){
             tipoDeMedio.enviarMensaje(this);
+            return true;
         }
+        return false;
     }
+
+    
+    
+    @Override
+    public String toString() {
+        return "Alarma{" + "mensaje=" + mensaje + ", fecha=" + fecha + ", tipoDeMedio=" + tipoDeMedio + '}';
+    }
+    
+    
     public String getMensaje() {
         return mensaje;
     }
